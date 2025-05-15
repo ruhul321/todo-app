@@ -85,7 +85,7 @@ return (
           </button>
         </div>
         <div className="text-right">
-          <p className="text-sm font-medium">Hi {user?.user?.name?.split(' ')?.[0]}</p>
+          <p className="text-sm font-medium">Hi {user?.user?.name?.trim().split(/\s+/)[0] || 'User'}</p>
           <button
             onClick={logout}
             className="text-sm text-red-600 underline"

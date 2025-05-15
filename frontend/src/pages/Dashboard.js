@@ -56,7 +56,7 @@ const Dashboard = () => {
       <div className="flex justify-between items-center mb-4">
       <h2 className="text-2xl font-bold mb-4">My To-Do Lists</h2>
       <div className="text-right">
-          <p className="text-sm font-medium">Hi {user?.user?.name?.split(' ')?.[0]}</p>
+          <p className="text-sm font-medium">Hi {user?.user?.name?.trim().split(/\s+/)[0] || 'User'}</p>
           <button
             onClick={logout}
             className="text-sm text-red-600 underline"
