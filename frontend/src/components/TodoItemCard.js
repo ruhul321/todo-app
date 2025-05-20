@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 const TodoItemCard = ({ item, onUpdate, onDelete, onToggleComplete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editText, setEditText] = useState(item.text);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isEditing && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isEditing]);
 
   const handleSave = () => {
     if (editText.trim()) {
@@ -32,6 +39,7 @@ const TodoItemCard = ({ item, onUpdate, onDelete, onToggleComplete }) => {
 
         {isEditing ? (
           <input
+            ref={inputRef}
             type="text"
             value={editText}
             onChange={(e) => setEditText(e.target.value)}
